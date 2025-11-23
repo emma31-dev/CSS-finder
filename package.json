@@ -1,0 +1,90 @@
+{
+  "name": "css-finder",
+  "displayName": "CSS Finder",
+  "description": "Find unused CSS classes in your project",
+  "version": "0.0.1",
+  "publisher": "your-publisher-name",
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/css-finder"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/css-finder/issues"
+  },
+  "keywords": [
+    "css",
+    "unused",
+    "linter",
+    "cleanup",
+    "optimization"
+  ],
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "css-finder.scanUnusedCSS",
+        "title": "CSS Finder: Scan for Unused CSS",
+        "icon": "$(search)"
+      }
+    ],
+    "configuration": {
+      "title": "CSS Finder",
+      "properties": {
+        "cssFinder.ignoreFolders": {
+          "type": "array",
+          "default": [
+            "node_modules",
+            "dist",
+            "build",
+            ".git"
+          ],
+          "description": "Folders to ignore during scanning"
+        },
+        "cssFinder.fileExtensions": {
+          "type": "array",
+          "default": [
+            ".html",
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx",
+            ".vue"
+          ],
+          "description": "File extensions to scan for CSS usage"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^18.x",
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.22.0",
+    "eslint": "^8.54.0",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "postcss": "^8.4.31",
+    "postcss-selector-parser": "^6.0.13"
+  }
+}
